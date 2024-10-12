@@ -17,7 +17,7 @@ struct CardView: View {
                 .accessibilityAddTraits(.isHeader)
             Spacer()
             HStack {
-                Label("\(scrum.attendees.count)", systemImage: "person.4")
+                Label("\(scrum.attendees.count)", systemImage: "person.3")
                     .accessibilityLabel("\(scrum.attendees.count) attendees")
                 Spacer()
                 Label("\(scrum.lengthInMinutes)", systemImage: "clock")
