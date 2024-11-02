@@ -12,7 +12,7 @@ struct MeetingView: View {
     @Binding var scrum: DailyScrum
     @StateObject var scrumTimer = ScrumTimer()
     
-    private var player: AVPlayer { AVPlayer.sharedDingPlayer }    
+    private var player: AVPlayer { AVPlayer.sharedDingPlayer }
     
     var body: some View {
         ZStack {
@@ -24,8 +24,10 @@ struct MeetingView: View {
                     secondsRemaining: scrumTimer.secondsRemaining,
                     theme: scrum.theme
                 )
-                Circle()
-                    .strokeBorder(lineWidth: 24)
+                MeetingTimerView(
+                    speakers: scrumTimer.speakers,
+                    theme: scrum.theme
+                )
                 MeetingFooterView(
                     speakers: scrumTimer.speakers,
                     skipAction: scrumTimer.skipSpeaker
@@ -51,7 +53,7 @@ struct MeetingView: View {
         }
         scrumTimer.startScrum()
     }
-
+    
     private func endScrum() {
         scrumTimer.stopScrum()
         let newHistory = History(attendees: scrum.attendees)
